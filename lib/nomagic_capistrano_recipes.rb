@@ -151,12 +151,21 @@ module NomagicCapistranoRecipes
       set(:unicorn_pid) { "#{deploy_to}/#{shared_dir}/pids/unicorn.pid" }
 
       task :restart do
+        puts "-----------------------------------------------------------------------------------------"
+        puts "Restarting unicorn"
+        puts "-----------------------------------------------------------------------------------------"
         run "if [ -f #{unicorn_pid} ] && [ -e /proc/$(cat #{unicorn_pid}) ]; then kill -USR2 `cat #{unicorn_pid}`; else cd #{deploy_to}/current && bundle exec unicorn -c #{unicorn_conf} -E #{rails_env} -D; fi"
       end
       task :start do
+        puts "-----------------------------------------------------------------------------------------"
+        puts "Starting unicorn"
+        puts "-----------------------------------------------------------------------------------------"
         run "cd #{deploy_to}/current && bundle exec unicorn -c #{unicorn_conf} -E #{rails_env} -D"
       end
       task :stop do
+        puts "-----------------------------------------------------------------------------------------"
+        puts "Stopping unicorn"
+        puts "-----------------------------------------------------------------------------------------"
         run "if [ -f #{unicorn_pid} ] && [ -e /proc/$(cat #{unicorn_pid}) ]; then kill -QUIT `cat #{unicorn_pid}`; fi"
       end
     end
