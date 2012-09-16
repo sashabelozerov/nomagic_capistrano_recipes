@@ -1,4 +1,6 @@
 require "nomagic_capistrano_recipes/version"
+require "capistrano"
+require "capistrano/cli"
 
 module NomagicCapistranoRecipes
 
