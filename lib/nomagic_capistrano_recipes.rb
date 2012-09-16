@@ -1,7 +1,8 @@
 require "nomagic_capistrano_recipes/version"
 
 module NomagicCapistranoRecipes
-  Capistrano::Configuration.instance.load do
+
+  Capistrano::Configuration.instance(:must_exist).load do
     set :enable_local_db_export, false
     set :enable_local_asset_export, false
 
